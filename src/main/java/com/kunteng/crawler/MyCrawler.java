@@ -66,11 +66,13 @@ public class MyCrawler {
         if (html != null && !"".equals(html)) {
             Document doc = Jsoup.parse(html.replaceAll("\\<\\!\\-\\-", "").
                     replaceAll("\\-\\-\\>", "").replaceAll("\\-\\-\\\\\\>", ""));
+            //通过F12查看网页，发现需要的模块都在该标签下
             Elements elements = doc.select("div#layout-content");
             doc = Jsoup.parse(elements.html());
             elements = doc.select("a");
             for (Element el :
                     elements) {
+                //获取href的属性值
                 String href = el.attr("href");
                 if (checkURL(href)) {
                     set.add(el.attr("href"));
