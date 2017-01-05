@@ -17,7 +17,7 @@ public class RealTime500 {
 				Elements tds = trs.get(i).select("td");
 				int size = tds.size();
 				if (0 < size) {
-					// ±ÈÈüÃû´Î
+					// æ¯”èµ›åæ¬¡
 					String gameNo = tds.get(0).text();
 					String week = gameNo.substring(0, 2);
 					String no = gameNo.substring(2, gameNo.length());
@@ -25,85 +25,85 @@ public class RealTime500 {
 					System.out.println("week:"+week);
 					System.out.println("no:"+no);
 
-					// ÈüÊÂ±³¾°ÑÕÉ«
+					// èµ›äº‹èƒŒæ™¯é¢œè‰²
 					String color = tds.get(1).attr("bgcolor");
 					System.out.println("color:"+color);
 
-					// ÈüÊÂÃû³Æ
+					// èµ›äº‹åç§°
 					String gameName = tds.get(1).text();
 					System.out.println("gameName:"+gameName);
 
-					// ÈüÊÂÂÖ´Î
+					// èµ›äº‹è½®æ¬¡
 					String gameRound = tds.get(2).text();
 					System.out.println("gameRound:"+gameRound);
 
-					// ÈüÊÂÊ±¼ä
+					// èµ›äº‹æ—¶é—´
 					String gameTime = tds.get(3).text();
 					System.out.println("gameTime:"+gameTime);
-					
-					//ÈüÊÂ×´Ì¬
+
+					//èµ›äº‹çŠ¶æ€
 					String status = tds.get(4).text();
 					System.out.println("status:"+status);
-					
-					//Ö÷¶ÓÐÅÏ¢
+
+					//ä¸»é˜Ÿä¿¡æ¯
 					String homeTemp = tds.get(5).text();
-					//ÅÅÃû
+					//æŽ’å
 					String gray = tds.get(5).getElementsByClass("gray").text();
-					//Ö÷¶ÓÃû³Æ
+					//ä¸»é˜Ÿåç§°
 					String homeTeam = tds.get(5).getElementsByTag("a").text();
-					//Ö÷¶Ó»ÆÅÆ
+					//ä¸»é˜Ÿé»„ç‰Œ
 					String homeYellowcard = tds.get(5).getElementsByClass("yellowcard").text();
-					//¿Í¶Ó»ÉÆ¬
+					//å®¢é˜Ÿç°§ç‰‡
 					String homeRedcard = tds.get(5).getElementsByClass("redcard").text();
 					System.out.println("homeTemp:"+homeTemp);
 					System.out.println("gray:"+gray);
 					System.out.println("homeTeam:"+homeTeam);
 					System.out.println("homeYellowcard:"+homeYellowcard);
 					System.out.println("homeRedcard:"+homeRedcard);
-					
-					//±È·Ö
+
+					//æ¯”åˆ†
 					String bf = tds.get(6).text();
 					System.out.println("bf:"+bf);
-					//Ö÷¶Ó½øÇò
+					//ä¸»é˜Ÿè¿›çƒ
 					String zbf = tds.get(6).getElementsByClass("clt1").text();
 					System.out.println("zbf:"+zbf);
-					//ÅâÂÊÅÌ¿Ú
+					//èµ”çŽ‡ç›˜å£
 					String odds = tds.get(6).getElementsByClass("fhuise").text();
 					System.out.println("odds:"+odds);
-					//¿Í¶Ó½øÇò
+					//å®¢é˜Ÿè¿›çƒ
 					String kbf = tds.get(6).getElementsByClass("clt3").text();
 					System.out.println("kbf:"+kbf);
-					
-					//¿Í¶ÓÐÅÏ¢
+
+					//å®¢é˜Ÿä¿¡æ¯
 					String visitingTemp = tds.get(7).text();
-					//ÅÅÃû
+					//æŽ’å
 					String visitGray = tds.get(7).getElementsByClass("gray").text();
-					//Ö÷¶ÓÃû³Æ
+					//ä¸»é˜Ÿåç§°
 					String visitingTeam = tds.get(7).getElementsByTag("a").text();
-					//Ö÷¶Ó»ÆÅÆ
+					//ä¸»é˜Ÿé»„ç‰Œ
 					String visitYellowcard = tds.get(7).getElementsByClass("yellowcard").text();
-					//¿Í¶Ó»ÉÆ¬
+					//å®¢é˜Ÿç°§ç‰‡
 					String visitRedcard = tds.get(7).getElementsByClass("redcard").text();
 					System.out.println("visitingTemp:"+visitingTemp);
 					System.out.println("visitGray:"+visitGray);
 					System.out.println("visitingTeam:"+visitingTeam);
 					System.out.println("visitYellowcard:"+visitYellowcard);
 					System.out.println("visitRedcard:"+visitRedcard);
-					
-					//°ë³¡±È·Ö
+
+					//åŠåœºæ¯”åˆ†
 					String bcbf = tds.get(8).text();
 					System.out.println("bcbf:"+bcbf);
-					
-					//Èü¹û
+
+					//èµ›æžœ
 					String amidithion = tds.get(10).text();
 					System.out.println("amidithion:"+amidithion);
-				
+
 
 				}
-				
+
 
 			}
-			
+
 
 		} catch (Exception e) {
 

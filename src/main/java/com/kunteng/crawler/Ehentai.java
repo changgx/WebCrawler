@@ -2,80 +2,90 @@ package com.kunteng.crawler;/**
  * Created by Administrator on 2016/10/26.
  */
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.CookieStore;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.params.ClientPNames;
-import org.apache.http.cookie.*;
-import org.apache.http.cookie.params.CookieSpecPNames;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.cookie.BrowserCompatSpec;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Administrator 2016/10/26
  */
 public class Ehentai {
-    public static int count=1;
-//    public static void main(String[] args) throws Exception{
-//        String start="http://hentaihere.com/m/S16102/";
-//        for (int i = 1; i <2 ; i++) {
-//            String tmpurl=start+i+"/1";
-//            Connection.Response res = Jsoup.connect(tmpurl)
-//                    .method(Connection.Method.POST)
-//                    .execute();
-//            Document doc = res.parse();
-//            Element element= doc.getElementById("arf-reader-img");
-//            Element tmp= doc.getElementsByClass("list-inline").get(0);
-//            int page=tmp.select("li").size();
-//            for (int j=1;j<=page;j++){
-//                getNextAndImg(start+i+"/"+j);
-//            }
-//
-//
-//        }
-//
-//
-//    }
-    public static void getNextAndImg(String url) throws Exception{
-        Connection.Response res = Jsoup.connect(url)
-                .method(Connection.Method.POST)
-                .execute();
-        Document doc = res.parse();
-        Element element= doc.getElementById("arf-reader-img");
-        String imgurl=element.select("img").attr("src");
-        Download(imgurl);
+    public static int count = 1;
+
+    public static void main(String[] args) {
+        String start = "http://hentaihere.com/m/S16102/";
+        for (int i = 1; i < 17; i++) {
+            String tmpurl = start + i + "/1";
+            Connection.Response res = null;
+            try {
+                res = getResponse(tmpurl);
+                Document doc = res.parse();
+                Element tmp = doc.getElementsByClass("list-inline").get(0);
+                int page = tmp.select("li").size();
+                for (int j = 1; j <= page; j++) {
+                    getNextAndImg(start + i + "/" + j);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+
+    }
+    public static Connection.Response getResponse(String url){
+        Connection.Response res = null;
+        System.out.println("response:"+url);
+        try {
+            res = Jsoup.connect(url)
+                    .method(Connection.Method.POST).timeout(10000)
+                    .execute();
+            return res;
+        } catch (IOException e) {
+            System.out.println(url);
+            e.printStackTrace();
+           return getResponse(url);
+        }
+    }
+
+    public static void getNextAndImg(String url) {
+        Connection.Response res = null;
+        try {
+            res = Jsoup.connect(url)
+                    .method(Connection.Method.POST).timeout(10000)
+                    .execute();
+            Document doc = res.parse();
+            Element element = doc.getElementById("arf-reader-img");
+            String imgurl = element.select("img").attr("src");
+            Download(imgurl);
+        } catch (Exception e) {
+            System.out.println(url);
+            e.printStackTrace();
+            getNextAndImg(url);
+        }
+
 
     }
 
-    public static void main(String[] args) throws Exception{
-        String url="http://hentaicdn.com/hentai/16102/1/hcdn0001.jpg";
+    private static void Download(String url) throws IOException {
+        System.out.println("img:"+url );
         try {
-            String imageName = url.substring(url.lastIndexOf("/") + 1,
-                    url.length());
-
             URL uri = new URL(url);
             InputStream in = uri.openStream();
-            FileOutputStream fo = new FileOutputStream(new File("2.jpg"));
+            String tmp = "" + count;
+            String name = tmp;
+            for (int i = 0; i < 5 - tmp.length(); i++) {
+                name = "0" + name;
+            }
+            FileOutputStream fo = new FileOutputStream(new File("E://ScandaloftheWitch//" + name + ".jpg"));
             byte[] buf = new byte[1024];
             int length = 0;
             while ((length = in.read(buf, 0, buf.length)) != -1) {
@@ -83,19 +93,15 @@ public class Ehentai {
             }
             in.close();
             fo.close();
+            System.out.println(name + ".jpg download end");
+            count++;
         } catch (Exception e) {
+            Download(url);
             e.printStackTrace();
         }
-    }
-    private static void  Download(String url) throws IOException {
-        Connection.Response resultImageResponse = Jsoup.connect(url).ignoreContentType(true).execute();
-
-        FileOutputStream out = (new FileOutputStream(new java.io.File("E://ScandaloftheWitch//"+count+".jpg")));
-        out.write(resultImageResponse.bodyAsBytes());
 
 
     }
-
 
 
 }

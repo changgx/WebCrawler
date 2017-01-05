@@ -154,7 +154,7 @@ public class MyCrawler {
                 }
             }
         } catch (Exception e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         } finally {
             return html;
         }
@@ -228,12 +228,13 @@ public class MyCrawler {
 
 
     public static void main(String[] args) throws Exception {
-        Set<String> set = getValidURL("https://www.hao123.com");
-        Set<String> resultSet = filterURL(set);
-        for (String url :
-                resultSet) {
-            Util.stringToFile(url, "F://url.txt");
-        }
+        System.out.println(getHtmlByUrl("http://lofi.e-hentai.org/"));
+//        Set<String> set = getValidURL("https://www.hao123.com");
+//        Set<String> resultSet = filterURL(set);
+//        for (String url :
+//                resultSet) {
+//            Util.stringToFile(url, "F://url.txt");
+//        }
     }
 
 
