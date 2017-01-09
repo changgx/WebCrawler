@@ -1,4 +1,4 @@
-package com.kunteng.crawler;/**
+package com.changgx;/**
  * Created by Administrator on 2016/10/26.
  */
 
@@ -228,7 +228,7 @@ public class MyCrawler {
 
 
     public static void main(String[] args) throws Exception {
-        System.out.println(getHtmlByUrl("http://lofi.e-hentai.org/"));
+        System.out.println(getHtmlByUrl("http://www.u17.com/chapter/102843.html"));
 //        Set<String> set = getValidURL("https://www.hao123.com");
 //        Set<String> resultSet = filterURL(set);
 //        for (String url :

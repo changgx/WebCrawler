@@ -1,4 +1,4 @@
-package com.kunteng.crawler.csdn;
+package com.changgx.csdn;
 
 import java.security.cert.CertificateException;  
 import java.security.cert.X509Certificate;  

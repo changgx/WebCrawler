@@ -1,4 +1,4 @@
-package com.kunteng.crawler;/**
+package com.changgx;/**
  * Created by Administrator on 2016/10/26.
  */
 
@@ -16,7 +16,7 @@ import java.net.URL;
 /**
  * Administrator 2016/10/26
  */
-public class Ehentai {
+public class ScandaloftheWitch {
     public static int count = 1;
 
     public static void main(String[] args) {
