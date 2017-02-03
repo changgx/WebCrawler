@@ -1,32 +1,31 @@
 package com.changgx;
 
-import org.jsoup.Connection;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
+import net.sf.json.JSONArray;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Created by changgx on 2017/1/6.
  */
 public class MissMystic {
     public static void main(String[] args) throws IOException {
-        String url = "http://mangapark.me/manga/miss-mystic/s1/c";
+        String url = "https://raws.yomanga.co/read/miss_mystic/ko/0/";
 
-        for (int i = 1; i < 2; i++) {
-            String startpage = url + i + "/1";
-            Connection.Response response = Utils.getResponse(startpage);
-            Document doc = response.parse();
-            Element element = doc.getElementsByClass("img-num").get(0);
-            String tmp = element.text();
-            int page = Integer.parseInt(tmp.split("\\/")[1].replace(" ",""));
-            for (int j = 1; j <= page; j++) {
-                startpage = url + i + "/" + j;
-                response = Utils.getResponse(startpage);
-                doc = response.parse();
-                Element div=doc.getElementById("img-1");
-                String imgurl=div.attr("src");
-                Utils.download(imgurl,"E://comic//MissMystic");
+        for (int i = 1; i <= 27; i++) {
+            String startpage = url + i + "/page/1";
+            String html = HttpClientUtils.httpGet(startpage);
+            html = html.split("var pages \\= 1\\;")[1].split("var next_chapter")[0].split("\\=")[1].split("\\;")[0];
+//            html=html.substring(0,html.length()-2);
+            JSONArray info = JSONArray.fromObject(html);
+            String[] urlarray = new String[info.size()];
+            for (int j = 0; j < info.size(); j++) {
+                String tmp = info.getJSONObject(j).getString("url");
+                urlarray[j] = tmp;
+            }
+            Arrays.sort(urlarray);
+            for (int j = 0; j < urlarray.length; j++) {
+                Utils.download(urlarray[j],"E://comic//MissMystic");
             }
         }
 

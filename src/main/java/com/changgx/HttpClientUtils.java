@@ -31,7 +31,7 @@ import java.util.List;
 
 public class HttpClientUtils {
     public static void main(String[] args) throws Exception{
-        httpGet("http://lofi.e-hentai.org/s/e4776e0f42/1013629-2");
+        httpGet("https://exhentai.org/s/c2295e4ab0/1013629-152?nl=21183-412213");
     }
 
     /**
@@ -40,8 +40,6 @@ public class HttpClientUtils {
     public static String httpGet(String url) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         CloseableHttpResponse response=null;
-        HttpHost proxy = new HttpHost("127.0.0.1",2901, null);
-        httpclient.getParams().setParameter(ConnRouteParams.DEFAULT_PROXY, proxy);
         HttpEntity entity=null;
         String html="";
         try {

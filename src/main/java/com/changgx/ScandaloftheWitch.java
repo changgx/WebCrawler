@@ -65,7 +65,7 @@ public class ScandaloftheWitch {
             Document doc = res.parse();
             Element element = doc.getElementById("arf-reader-img");
             String imgurl = element.select("img").attr("src");
-            Download(imgurl);
+            Utils.download(imgurl,"E://comic//ScandaloftheWitch");
         } catch (Exception e) {
             System.out.println(url);
             e.printStackTrace();
@@ -75,33 +75,7 @@ public class ScandaloftheWitch {
 
     }
 
-    private static void Download(String url) throws IOException {
-        System.out.println("img:"+url );
-        try {
-            URL uri = new URL(url);
-            InputStream in = uri.openStream();
-            String tmp = "" + count;
-            String name = tmp;
-            for (int i = 0; i < 5 - tmp.length(); i++) {
-                name = "0" + name;
-            }
-            FileOutputStream fo = new FileOutputStream(new File("E://ScandaloftheWitch//" + name + ".jpg"));
-            byte[] buf = new byte[1024];
-            int length = 0;
-            while ((length = in.read(buf, 0, buf.length)) != -1) {
-                fo.write(buf, 0, length);
-            }
-            in.close();
-            fo.close();
-            System.out.println(name + ".jpg download end");
-            count++;
-        } catch (Exception e) {
-            Download(url);
-            e.printStackTrace();
-        }
 
-
-    }
 
 
 }
