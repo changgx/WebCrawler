@@ -34,12 +34,14 @@ public class ImagesUtil {
             File tmp=files[i];
 //            System.out.println(tmp.getAbsolutePath());
             String path=tmp.getAbsolutePath();
+            System.out.println(path);
             java.util.List<Integer> list=ReadColor.getImagePixel(path);
             for (int j = 0; j < list.size(); j++) {
+
                 if(j%2==0){
-                    System.out.println(path);
                     int start=list.get(j);
                     int end=list.get(j+1);
+
                     cutImage(tmp.getAbsolutePath(),destPath+""+index+".jpg",start,end-start);
                     index++;
 
@@ -68,6 +70,7 @@ public class ImagesUtil {
         gi.dispose();
         File file = new File(destPath);
         ImageIO.write(bimg, "JPEG", file);
+
     }
     public static void cleanFiles(String path){
         File file=new File(path);
