@@ -21,7 +21,7 @@ public class ScandaloftheWitch {
 
     public static void main(String[] args) {
         String start = "http://hentaihere.com/m/S16102/";
-        for (int i = 1; i < 17; i++) {
+        for (int i = 1; i < 25; i++) {
             String tmpurl = start + i + "/1";
             Connection.Response res = null;
             try {
@@ -65,7 +65,7 @@ public class ScandaloftheWitch {
             Document doc = res.parse();
             Element element = doc.getElementById("arf-reader-img");
             String imgurl = element.select("img").attr("src");
-            Utils.download(imgurl,"E://comic//ScandaloftheWitch");
+            Utils.download(imgurl,"/Users/changgexing/娱乐/comic/ScandaloftheWitch");
         } catch (Exception e) {
             System.out.println(url);
             e.printStackTrace();

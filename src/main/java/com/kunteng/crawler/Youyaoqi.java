@@ -19,6 +19,7 @@ import java.net.URL;
  */
 public class Youyaoqi {
     public static void main(String[] args) throws IOException {
+        System.out.println("ss");
         String url="http://www.u17.com/chapter/9963.html#image_id=83276";
         Connection.Response res=Jsoup.connect(url).timeout(5000).execute();
         Document doc=res.parse();
