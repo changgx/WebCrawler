@@ -7,10 +7,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 
 /**
@@ -21,7 +18,7 @@ public class ScandaloftheWitch {
 
     public static void main(String[] args) {
         String start = "http://hentaihere.com/m/S16102/";
-        for (int i = 1; i < 25; i++) {
+        for (int i = 1; i < 17; i++) {
             String tmpurl = start + i + "/1";
             Connection.Response res = null;
             try {
@@ -65,7 +62,7 @@ public class ScandaloftheWitch {
             Document doc = res.parse();
             Element element = doc.getElementById("arf-reader-img");
             String imgurl = element.select("img").attr("src");
-            Utils.download(imgurl,"/Users/changgexing/娱乐/comic/ScandaloftheWitch");
+            Utils.download(imgurl,"E://comic//ScandaloftheWitch");
         } catch (Exception e) {
             System.out.println(url);
             e.printStackTrace();
@@ -73,6 +70,14 @@ public class ScandaloftheWitch {
         }
 
 
+    }
+    public static void writeFile(StringBuffer url){
+        try {
+            PrintStream ps=new PrintStream(new File("E://url.txt"));
+            ps.append(url);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 

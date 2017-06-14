@@ -16,12 +16,12 @@ import java.util.*;
  * 2017/2/22 15:26
  */
 public class ImagesUtil {
-    public static int index=0;
+    public static int index=1751;
     public static void main(String[] args) {
-
+        cleanFiles("E:\\comic\\Sex Knight\\");
         try {
-//            cutImages("E:\\comic\\scandal_of_the_witch","E:\\");
-            cutImages("E:\\comic\\scandal_of_the_witch","E:\\comic\\scandal_of_the_witch_cut\\");
+//            cutImages("E:\\Sex Knight\\Chapter 19","E:\\comic\\Sex Knight\\");
+//            cutImages("E:\\comic\\scandal_of_the_witch","E:\\comic\\scandal_of_the_witch_cut\\");
 //            cleanFiles("E:\\comic\\scandal_of_the_witch_cut\\");
         } catch (Exception e) {
             e.printStackTrace();

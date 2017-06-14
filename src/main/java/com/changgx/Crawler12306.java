@@ -52,20 +52,20 @@ public class Crawler12306 {
      */
     private static String codeKey = "randCode";
 
-    public static void main(String[] args) throws Exception {
-        HashMap<String, String> map = new HashMap();
-        map.put(codeKey, "256,123");
-        map.put(passwordKey, "fight2016");
-        map.put(usernameKey, "2210840161@qq.com");
-        while (true) {
-            String data = sendSSLPostRequest(loginURL, map);
-            System.out.println(data);
-            String msg = JSONObject.fromObject(data).getString("messages");
-            if (!"[\"系统繁忙，请稍后重试！\"]".equals(msg)) {
-                System.out.println(data);
-                break;
-            }
-        }
+//    public static void main(String[] args) throws Exception {
+//        HashMap<String, String> map = new HashMap();
+//        map.put(codeKey, "256,123");
+//        map.put(passwordKey, "fight2016");
+//        map.put(usernameKey, "2210840161@qq.com");
+//        while (true) {
+//            String data = sendSSLPostRequest(loginURL, map);
+//            System.out.println(data);
+//            String msg = JSONObject.fromObject(data).getString("messages");
+//            if (!"[\"系统繁忙，请稍后重试！\"]".equals(msg)) {
+//                System.out.println(data);
+//                break;
+//            }
+//        }
 
 //        while (true){
 //            String msg=func();
@@ -73,7 +73,7 @@ public class Crawler12306 {
 //
 //            }
 //        }
-    }
+//    }
 
     //    public static String func() throws Exception{
 //        CloseableHttpClient closeableHttpClient = HttpClients.custom()
