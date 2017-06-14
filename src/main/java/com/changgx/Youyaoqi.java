@@ -1,4 +1,4 @@
-package com.kunteng.crawler;
+package com.changgx;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
