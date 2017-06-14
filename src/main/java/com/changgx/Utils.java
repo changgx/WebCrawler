@@ -54,6 +54,7 @@ public class Utils {
                 fo.write(buf, 0, length);
             }
             in.close();
+            fo.flush();
             fo.close();
             System.out.println(name + ".jpg download end. "+new Date());
             count++;
@@ -68,7 +69,7 @@ public class Utils {
         System.out.println("response:"+url);
         try {
             res = Jsoup.connect(url)
-                    .method(Connection.Method.GET).timeout(5000)
+                    .method(Connection.Method.GET)
                     .execute();
             return res;
         } catch (IOException e) {
