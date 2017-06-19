@@ -19,9 +19,11 @@ public class Utils {
     public static int count=1;
 
     public static void main(String[] args) throws Exception {
+        File old=new File("E://1.txt");
+        old.renameTo(new File("E://2.txt"));
 //        System.out.println(getRealURL("http://www.u17.com/chapter/102843.html"));
        // System.out.println(Jsoup.connect("http://www.u17.com/buy_chapter_choice.php?chapter_id=103884#image_id=810882").timeout(5000).execute().parse());
-        download("https://hentaicdn.com/hentai/16102/1/hcdn0001.jpg", "./");
+//        download("https://hentaicdn.com/hentai/16102/1/hcdn0001.jpg", "./");
     }
     public static void download(String imgurl,String path){
         URLConnection uc;

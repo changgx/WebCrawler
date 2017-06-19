@@ -36,7 +36,6 @@ public class ScandaloftheWitch {
 
         }
 
-
     }
     public static Connection.Response getResponse(String url){
         Connection.Response res = null;
@@ -57,14 +56,14 @@ public class ScandaloftheWitch {
         Connection.Response res = null;
         try {
             res = Jsoup.connect(url)
-                    .method(Connection.Method.POST).timeout(10000)
+                    .method(Connection.Method.POST)
                     .execute();
             Document doc = res.parse();
             Element element = doc.getElementById("arf-reader-img");
             String imgurl = element.select("img").attr("src");
-            System.out.println(imgurl);
-            writeFile(imgurl);
-            //Utils.download(imgurl,"/Users/changgexing/娱乐/comic/ScandaloftheWitch");
+//            System.out.println(imgurl);
+//            writeFile(imgurl);
+            Utils.download(imgurl,"E:\\comic\\ScandaloftheWitch");
         } catch (Exception e) {
             System.out.println(url);
             e.printStackTrace();
