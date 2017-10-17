@@ -16,7 +16,7 @@ import java.util.*;
  * 2017/2/22 15:26
  */
 public class ImagesUtil {
-    public static int index=1751;
+    public static int index=1;
     public static void main(String[] args) {
         cleanFiles("E:\\comic\\Sex Knight\\");
         try {
