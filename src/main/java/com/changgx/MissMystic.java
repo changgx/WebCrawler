@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 public class MissMystic {
     public static void main(String[] args) throws Exception {
-        new ImagesUtil().cutImages("E:\\comic\\MissMystic","E:\\comic\\MissMystic_cut\\");
+        new ImagesUtil().cutImages("/Users/changgexing/娱乐/comic/MissMystic","/Users/changgexing/娱乐/comic/MissMystic_cut/");
 //        String url = "https://yomanga.co/reader/read/miss_mystic/en/0/";
 //
 //        for (int i = 1; i <= 27; i++) {

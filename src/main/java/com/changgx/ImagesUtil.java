@@ -7,8 +7,7 @@ import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
 import java.io.File;
-import java.nio.file.Files;
-import java.util.*;
+
 
 /**
  * 长歌行
@@ -32,21 +31,16 @@ public class ImagesUtil {
         File[] files=file.listFiles();
         for (int i = 0; i < files.length; i++) {
             File tmp=files[i];
-//            System.out.println(tmp.getAbsolutePath());
             String path=tmp.getAbsolutePath();
             System.out.println(path);
             java.util.List<Integer> list=ReadColor.getImagePixel(path);
             for (int j = 0; j < list.size(); j++) {
-
                 if(j%2==0){
                     int start=list.get(j);
                     int end=list.get(j+1);
-
                     cutImage(tmp.getAbsolutePath(),destPath+""+index+".jpg",start,end-start);
                     index++;
-
                 }
-
             }
         }
         cleanFiles(destPath);
@@ -70,7 +64,6 @@ public class ImagesUtil {
         gi.dispose();
         File file = new File(destPath);
         ImageIO.write(bimg, "JPEG", file);
-
     }
     public static void cleanFiles(String path){
         File file=new File(path);

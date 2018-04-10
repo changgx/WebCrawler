@@ -34,7 +34,7 @@ public class Xiuluo {
                         String imgurl=json.getJSONObject(i+"").getString("");
                         sun.misc.BASE64Decoder decoder = new sun.misc.BASE64Decoder();
                         imgurl = new String(decoder.decodeBuffer(imgurl));
-                        Utils.download(imgurl,"E://comic//ÐÞÂÞ");
+//                        Utils.download(imgurl,"E://comic//ï¿½ï¿½ï¿½ï¿½");
                     }
                 }
 

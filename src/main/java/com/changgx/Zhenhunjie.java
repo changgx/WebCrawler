@@ -39,7 +39,7 @@ public class Zhenhunjie {
                     String imgurl=json.getJSONObject(i+"").getString("");
                     sun.misc.BASE64Decoder decoder = new sun.misc.BASE64Decoder();
                     imgurl = new String(decoder.decodeBuffer(imgurl));
-                    Utils.download(imgurl,"E://comic//镇魂街");
+//                    Utils.download(imgurl,"E://comic//镇魂街");
                 }
             }
 

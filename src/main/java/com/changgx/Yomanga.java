@@ -30,7 +30,7 @@ public class Yomanga {
             }
             Arrays.sort(urlarray);
             for (int j = 0; j < urlarray.length; j++) {
-                Utils.download(urlarray[j],"E://comic//"+name);
+//                Utils.download(urlarray[j],"E://comic//"+name);
             }
         }
 

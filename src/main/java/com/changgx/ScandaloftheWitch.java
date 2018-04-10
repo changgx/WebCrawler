@@ -1,4 +1,5 @@
-package com.changgx;/**
+package com.changgx;
+/**
  * Created by Administrator on 2016/10/26.
  */
 
@@ -14,27 +15,29 @@ import java.net.URL;
  * Administrator 2016/10/26
  */
 public class ScandaloftheWitch {
-    public static int count = 1;
 
-    public static void main(String[] args) {
-        String start = "http://hentaihere.com/m/S16102/";
-        for (int i = 1; i < 25; i++) {
-            String tmpurl = start + i + "/1";
-            Connection.Response res = null;
-            try {
-                res = getResponse(tmpurl);
-                Document doc = res.parse();
-                Element tmp = doc.getElementsByClass("list-inline").get(0);
-                int page = tmp.select("li").size();
-                for (int j = 1; j <= page; j++) {
-                    getNextAndImg(start + i + "/" + j);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    public static void main(String[] args) throws Exception {
+        ImagesUtil.cutImages("/Users/changgexing/娱乐/comic/ScandaloftheWitch",
+                "/Users/changgexing/娱乐/comic/ScandaloftheWitch_cut/");
+//        String start = "http://hentaihere.com/m/S16102/";
+//        for (int i = 1; i < 25; i++) {
+//            String tmpurl = start + i + "/1";
+//            Connection.Response res = null;
+//            try {
+//                res = getResponse(tmpurl);
+//                Document doc = res.parse();
+//                Element tmp = doc.getElementsByClass("list-inline").get(0);
+//                int page = tmp.select("li").size();
+//                for (int j = 1; j <= page; j++) {
+//                    getNextAndImg(start + i + "/" + j);
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//
+//        }
 
-
-        }
 
     }
     public static Connection.Response getResponse(String url){
@@ -56,14 +59,14 @@ public class ScandaloftheWitch {
         Connection.Response res = null;
         try {
             res = Jsoup.connect(url)
-                    .method(Connection.Method.POST)
+                    .method(Connection.Method.POST).timeout(5000)
                     .execute();
             Document doc = res.parse();
             Element element = doc.getElementById("arf-reader-img");
             String imgurl = element.select("img").attr("src");
-//            System.out.println(imgurl);
+            System.out.println(imgurl);
 //            writeFile(imgurl);
-            Utils.download(imgurl,"E:\\comic\\ScandaloftheWitch");
+            Utils.download(imgurl,"/Users/changgexing/娱乐/comic/ScandaloftheWitch");
         } catch (Exception e) {
             System.out.println(url);
             e.printStackTrace();
