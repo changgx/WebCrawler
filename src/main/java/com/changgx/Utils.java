@@ -19,20 +19,21 @@ public class Utils {
     public static int count=1;
 
     public static void main(String[] args) throws Exception {
-        File old=new File("E://1.txt");
-        old.renameTo(new File("E://2.txt"));
-//        System.out.println(getRealURL("http://www.u17.com/chapter/102843.html"));
+//        File old=new File("E://1.txt");
+//        old.renameTo(new File("E://2.txt"));
+////        System.out.println(getRealURL("http://www.u17.com/chapter/102843.html"));
        // System.out.println(Jsoup.connect("http://www.u17.com/buy_chapter_choice.php?chapter_id=103884#image_id=810882").timeout(5000).execute().parse());
-//        download("https://hentaicdn.com/hentai/16102/1/hcdn0001.jpg", "./");
+        download("http://2.bp.blogspot.com/-K9e1EWvngkE/V81C1-UphtI/AAAAAABThmo/RVzsnQGKegU/w1900/MR-361620-798758-1.jpg", "./");
     }
     public static void download(String imgurl,String path){
         URLConnection uc;
-        StringBuilder parsedContentFromUrl = new StringBuilder();
         System.out.println("Getting content for URl : " + imgurl);
         try {
             URL url = new URL(imgurl);
             uc = url.openConnection();
-            uc.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+            uc.setConnectTimeout(10*1000);
+//            uc.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+            uc.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36");
             uc.connect();
             uc.getInputStream();
             BufferedInputStream in = new BufferedInputStream(uc.getInputStream());
